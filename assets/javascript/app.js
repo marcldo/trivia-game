@@ -26,13 +26,66 @@ const questions = [
 
 ];
 
+let time = 10;
+let intervalId;
+let questionNum = 0;
 
-function displayQnA(question) {
-    console.log(this);
-    $(".question").text(this.question);
-    $(".a").text(this.a);
-    $(".b").text(this.b);
-    $(".c").text(this.c);
-    $(".d").text(this.d);
+$(".start").on("click", function () {
+    startGame();
+    $(".start").css("display", "none");
+    $(".timer").css("display", "block");
+});
+
+
+function startGame() {
+    questionNum = 0;
+    getNewQ();
+    runTimer();
 };
-displayQnA(questions[1]);
+
+function getNewQ() {
+    if (questionNum < questions.length) {
+        displayQnA(questions[questionNum]);
+        questionNum++;
+        console.log(questionNum);
+    }
+    else {
+        startGame();
+    }
+};
+
+function displayQnA(obj) {
+    console.log(obj);
+    $(".question").text(obj.question);
+    $(".a").text(obj.a);
+    $(".b").text(obj.b);
+    $(".c").text(obj.c);
+    $(".d").text(obj.d);
+};
+
+//timer functions
+function runTimer() {
+    if (time > 0) {
+        intervalId = setInterval(decrementTimer, 1000);
+    }
+};
+
+function decrementTimer() {
+    time--;
+    $(".timer").text("Time left " + time);
+
+    if (time === 0) {
+        getNewQ();
+        stopTimer();
+        resetTimer();
+    }
+};
+
+function stopTimer() {
+    clearInterval(intervalId);
+};
+
+function resetTimer() {
+    time = 10;
+    runTimer();
+}
