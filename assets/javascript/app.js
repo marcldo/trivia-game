@@ -62,10 +62,37 @@ const questions = [
         answer: "Chalet",
         category: "Architecture"
     },
+    {
+        question: "TIM COOK HAS BEEN THE CEO OF THIS COMPANY SINCE 2011",
+        a: "Google",
+        b: "Apple",
+        c: "IBM",
+        d: "Microsoft",
+        answer: "Apple",
+        category: "Business"
+    },
+    {
+        question: "THE NAME OF THIS ACTIVE VOLCANO ON SICILY IS FROM THE GREEK FOR “TO BURN”",
+        a: "Stromboli",
+        b: "Mount Etna",
+        c: "Mount St. Helens",
+        d: "Mount Pinatubo",
+        answer: "Mount Etna",
+        category: "Volcanoes"
+    },
+    {
+        question: "THIS ITALIAN DISCOVERED THE LAW OF FALLING BODIES AS WELL AS THE LAW OF THE PENDULUM",
+        a: "Giovanni Cassini",
+        b: "Isaac Newton",
+        c: "Nicolaus Copernicus",
+        d: "Galileo Galilei",
+        answer: "Galileo Galilei",
+        category: "Scientist"
+    }
 
 ];
 
-let time = 10;
+let time = 30;
 let intervalId;
 let questionNum = 0;
 let correct = 0;
@@ -133,6 +160,7 @@ function getNewQ() {
 function displayQnA(obj) {
 
     console.log(obj);
+    $(".category").text(obj.category);
     $(".question").text(obj.question);
     $(".a").text(obj.a);
     $(".b").text(obj.b);
@@ -144,6 +172,7 @@ function displayQnA(obj) {
 function displayCorrectAnswer(obj, input) {
 
     //Hide questions and choices
+    $(".category").css("display", "none");
     $(".question").css("display", "none");
     $(".options").children().css("display", "none");
     $(".timer").css("display", "none");
@@ -161,6 +190,7 @@ function displayCorrectAnswer(obj, input) {
         console.log(questionNum);
         $(".correctAnswer").children().css("display", "none");
         if (questionNum < questions.length) {
+            $(".category").css("display", "block");
             $(".question").css("display", "block");
             $(".options").children().css("display", "block");
             $(".timer").css("display", "block");
@@ -183,7 +213,7 @@ function displayResults() {
 
     //set values
     $(".correct").text("Correct answers: " + correct);
-    $(".wrong").text("wrong answers: " + wrong);
+    $(".wrong").text("Wrong answers: " + wrong);
 
     //display results
     $(".results").children().css("display", "block");
@@ -233,7 +263,7 @@ function decrementTimer() {
     time--;
     $(".timer").text("Time left " + time);
 
-    if (time <= 5) {
+    if (time <= 10) {
         $(".timer").css("color", "#E03A3E");
     }
 
@@ -242,6 +272,7 @@ function decrementTimer() {
 
         if (questionNum < questions.length) {
             timesUp.play();
+            wrong++;
             displayCorrectAnswer(questions[questionNum], "Time is up! The Answer Is");
             questionNum++;
             nextQuestion();
@@ -257,7 +288,7 @@ function stopTimer() {
 
 function resetTimer() {
     clearInterval(intervalId);
-    time = 10;
+    time = 30;
     runTimer();
     $(".timer").css("color", "#dddddd");
 };
