@@ -10,26 +10,71 @@
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"
         integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
 
+    <link href="https://fonts.googleapis.com/css?family=Libre+Baskerville&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="assets/css/reset.css">
     <link rel="stylesheet" href="assets/css/style.css">
+
+
 </head>
 
 <body>
-    <h1 class="timer"></h1>
-    <button class="start">Start</button>
 
-    <h1 class="question"></h1>
-    <div class="options">
-        <p class="a"></p>
-        <p class="b"></p>
-        <p class="c"></p>
-        <p class="d"></p>
+    <iframe src="jeopardy-themelq.mp3" allow="autoplay" id="audio" style="display:none"></iframe>
+
+    <audio id="theme">
+        <source src="jeopardy-themelq.mp3" autoplay="autoplay" type="audio/mp3">
+    </audio>
+
+    <audio id="correctDing">
+        <source src="rightanswer.mp3" type="audio/mp3">
+    </audio>
+    <audio id="timesUp">
+        <source src="times-up.mp3" type="audio/mp3">
+    </audio>
+
+    <div class="container">
+
+        <div class="startButton">
+            <button class="start">Start</button>
+
+        </div>
+
+        <div class="gameContainer">
+
+
+            <div class="QnA">
+                <div class="qContainer">
+                    <h1 class="question"></h1>
+                </div>
+
+
+                <div class="options">
+                    <p class="a"></p>
+                    <p class="b"></p>
+                    <p class="c"></p>
+                    <p class="d"></p>
+
+                </div>
+
+                <h1 class="timer"></h1>
+            </div>
+
+            <div class="results">
+                <h1>Results</h1>
+                <p class="correct"></p>
+                <p class="wrong"></p>
+            </div>
+
+            <div class="correctAnswer">
+                <h1 class="status"></h1>
+                <h2 class="answer"></h2>
+                <img src="" alt="">
+            </div>
+
+
+        </div>
     </div>
 
-    <div class="results">
-        <h1>Results</h1>
-        <p class="correct"></p>
-        <p class="wrong"></p>
-    </div>
 
 </body>
 
