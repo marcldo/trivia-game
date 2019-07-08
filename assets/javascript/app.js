@@ -28,12 +28,40 @@ const questions = [
     },
     {
         question: "MICHELANGELO’S “PIETA” FEATURES THESE 2 FIGURES",
-        a: "Columbia University",
-        b: "Brown University",
-        c: "Dartmouth College",
-        d: "Cornell University",
-        answer: "Brown University"
-    }
+        a: "David & Goliath",
+        b: "God & Jesus",
+        c: "St.Peter & St.Christopher ",
+        d: "Mary & Jesus",
+        answer: "Mary & Jesus",
+        category: "Sculpture"
+    },
+    {
+        question: "THIS WEST COAST TEAM HAS WON 3 WORLD SERIES SINCE THE YEAR 2000",
+        a: "New York Yankees",
+        b: "Los Angeles Dodgers",
+        c: "Oakland Athletics",
+        d: "San Francisco Giants",
+        answer: "San Francisco Giants",
+        category: "Baseball Teams"
+    },
+    {
+        question: "IN THE 1850s HE DEVELOPED THE SAFTEY ELEVATOR",
+        a: "Charles Babbage",
+        b: "Elisha Otis",
+        c: "Thomas Edison",
+        d: "James Watt",
+        answer: "Elisha Otis",
+        category: "Inventors"
+    },
+    {
+        question: "THIS TYPE OF HOME WITH A GABLE ROOF IS TYPICAL OF THE SWISS ALPS",
+        a: "Chalet",
+        b: "Stone Cottage",
+        c: "Long House",
+        d: "Turf Houses",
+        answer: "Chalet",
+        category: "Architecture"
+    },
 
 ];
 
@@ -176,7 +204,8 @@ function checkAnswer(obj, guess) {
     else {
         console.log("wrong");
         wrong++;
-        displayCorrectAnswer(obj, "Wrong");
+        displayCorrectAnswer(obj, "Wrong, The Answer Is");
+        timesUp.play();
         //increment wrong
         //show wrong guess screen for 5 seconds
     }
@@ -213,7 +242,7 @@ function decrementTimer() {
 
         if (questionNum < questions.length) {
             timesUp.play();
-            displayCorrectAnswer(questions[questionNum], "Time is up!");
+            displayCorrectAnswer(questions[questionNum], "Time is up! The Answer Is");
             questionNum++;
             nextQuestion();
 
