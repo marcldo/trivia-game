@@ -45,7 +45,7 @@ const questions = [
         category: "Baseball Teams"
     },
     {
-        question: "IN THE 1850s HE DEVELOPED THE SAFTEY ELEVATOR",
+        question: "IN THE 1850s HE DEVELOPED THE SAFETY ELEVATOR",
         a: "Charles Babbage",
         b: "Elisha Otis",
         c: "Thomas Edison",
