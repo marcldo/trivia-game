@@ -110,16 +110,17 @@ theme.play();
 
 $(".start").on("click", function () {
     startGame();
-
+    //hide start button and display timer questions and choices
     $(".start").css("display", "none");
     $(".timer").css("display", "block");
     $(".gameContainer").css("display", "block");
+    //stop audio
     theme.src = "";
     audio.src = "";
 });
 
 $(".a").on("click", function () {
-    //checkanswer
+    //checkanswer for the current question, pass option selected
     checkAnswer(questions[questionNum], "a");
 });
 $(".b").on("click", function () {
@@ -145,11 +146,12 @@ function startGame() {
 
 
 function getNewQ() {
-    console.log(questionNum);
+
     if (questionNum < questions.length) {
         displayQnA(questions[questionNum]);
 
     }
+    //else questions are finished show correct answer for 5 seconds then show results and stop timer 
     else {
         setTimeout(function () { displayResults() }, 5000);
         stopTimer();
@@ -159,7 +161,7 @@ function getNewQ() {
 
 function displayQnA(obj) {
 
-    console.log(obj);
+    //take question object and update html elements
     $(".category").text(obj.category);
     $(".question").text(obj.question);
     $(".a").text(obj.a);
@@ -187,7 +189,7 @@ function displayCorrectAnswer(obj, input) {
 
 
     setTimeout(function () {
-        console.log(questionNum);
+        //wait 5 seconds then display new question
         $(".correctAnswer").children().css("display", "none");
         if (questionNum < questions.length) {
             $(".category").css("display", "block");
@@ -200,7 +202,7 @@ function displayCorrectAnswer(obj, input) {
     }, 5000);
 
 
-    //wait 5 seconds then display new question
+
 
 };
 
@@ -211,7 +213,7 @@ function displayResults() {
     $(".options").children().css("display", "none");
     $(".timer").css("display", "none");
 
-    //set values
+    //set show score
     $(".correct").text("Correct answers: " + correct);
     $(".wrong").text("Wrong answers: " + wrong);
 
@@ -224,7 +226,7 @@ function checkAnswer(obj, guess) {
 
     console.log(obj[guess]);
     if (obj[guess] === obj.answer) {
-        console.log("correct");
+
         correct++;
         displayCorrectAnswer(obj, "Correct!");
         correctDing.play();
@@ -232,12 +234,12 @@ function checkAnswer(obj, guess) {
         //show right guess screen for 5 seconds
     }
     else {
-        console.log("wrong");
+        //increment wrong
+        //show wrong guess screen for 5 seconds
+
         wrong++;
         displayCorrectAnswer(obj, "Wrong, The Answer Is");
         timesUp.play();
-        //increment wrong
-        //show wrong guess screen for 5 seconds
     }
 
     if (questionNum <= questions.length) {
